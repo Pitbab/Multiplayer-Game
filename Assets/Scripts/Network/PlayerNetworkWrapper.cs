@@ -19,6 +19,7 @@ public class PlayerNetworkWrapper : NetworkBehaviour
     {
         if (!IsOwner) return;
         
+        //thirdPersonController.SetOwner(true);
         thirdPersonController.enabled = true;
         playerInput.enabled = true;
         thirdPersonShooterController.enabled = true;

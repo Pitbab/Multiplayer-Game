@@ -103,6 +103,8 @@ namespace StarterAssets
         private int _animIDFreeFall;
         private int _animIDMotionSpeed;
 
+        private bool isOwner = true;
+
 #if ENABLE_INPUT_SYSTEM 
         private PlayerInput _playerInput;
 #endif
@@ -131,6 +133,7 @@ namespace StarterAssets
 
         private void Awake()
         {
+            if(!isOwner) return;
             // get a reference to our main camera
             if (_mainCamera == null)
             {
@@ -160,6 +163,7 @@ namespace StarterAssets
 
         private void Update()
         {
+            if(!isOwner) return;
             _hasAnimator = TryGetComponent(out _animator);
 
             JumpAndGravity();
@@ -169,6 +173,7 @@ namespace StarterAssets
 
         private void LateUpdate()
         {
+            if(!isOwner) return;
             CameraRotation();
         }
 
@@ -399,7 +404,7 @@ namespace StarterAssets
                 if (FootstepAudioClips.Length > 0)
                 {
                     var index = Random.Range(0, FootstepAudioClips.Length);
-                    AudioSource.PlayClipAtPoint(FootstepAudioClips[index], transform.TransformPoint(_controller.center), FootstepAudioVolume);
+                    AudioSource.PlayClipAtPoint(FootstepAudioClips[index], transform.TransformPoint(transform.position), FootstepAudioVolume);
                 }
             }
         }
@@ -408,8 +413,13 @@ namespace StarterAssets
         {
             if (animationEvent.animatorClipInfo.weight > 0.5f)
             {
-                AudioSource.PlayClipAtPoint(LandingAudioClip, transform.TransformPoint(_controller.center), FootstepAudioVolume);
+                AudioSource.PlayClipAtPoint(LandingAudioClip, transform.TransformPoint(transform.position), FootstepAudioVolume);
             }
+        }
+
+        public void SetOwner(bool value)
+        {
+            isOwner = value;
         }
     }
 }
