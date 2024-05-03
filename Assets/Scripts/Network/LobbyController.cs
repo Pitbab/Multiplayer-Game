@@ -209,7 +209,7 @@ namespace Network
                 NetworkManager.Singleton.GetComponent<UnityTransport>().SetRelayServerData(new RelayServerData(allocation, "dtls"));
                 GameMultiplayer.Instance.StartHost();
                 
-                Loader.LoadNetwork(Loader.Scene.LobbyScene);
+                Loader.LoadNetwork(Loader.Scene.Playground);
             }
             catch (LobbyServiceException e)
             {

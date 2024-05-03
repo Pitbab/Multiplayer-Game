@@ -11,6 +11,7 @@ namespace Misc
         public enum Scene
         {
             MainMenuScene,
+            Playground,
             GameMenuScene,
             LoadingScene,
             LobbyScene,
