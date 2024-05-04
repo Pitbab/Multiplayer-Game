@@ -4409,6 +4409,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 810fe2aae79076f4eb524b0ab80958b8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  networkSpawnableList:
+  - {fileID: 100006, guid: 94a130fb17f1cae4388a8fe1d8bd3055, type: 3}
 --- !u!4 &1932899243
 Transform:
   m_ObjectHideFlags: 0

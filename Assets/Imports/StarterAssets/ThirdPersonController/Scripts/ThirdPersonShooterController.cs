@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using Cinemachine;
+using Network;
 using StarterAssets;
 using Unity.Mathematics;
 using UnityEngine;
@@ -68,7 +69,8 @@ public class ThirdPersonShooterController : MonoBehaviour
         {
             if (hit.transform != null)
             {
-                Instantiate(bulletHitVFX, hit.point, Quaternion.LookRotation(hit.normal));
+                GameMultiplayer.Instance.SpawnBulletHitServerRpc(hit.point, hit.normal, 0);
+                //Instantiate(bulletHitVFX, hit.point, Quaternion.LookRotation(hit.normal));
                 /*
                 if (hitTransform.GetComponent<Hitable>() != null)
                 {

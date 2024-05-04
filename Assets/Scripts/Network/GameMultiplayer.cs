@@ -14,6 +14,8 @@ namespace Network
         public event EventHandler OnTryingToJoinGame;
         public event EventHandler OnFailedToJoinGame;
 
+        public List<GameObject> networkSpawnableList = new List<GameObject>();
+
         private void Awake()
         {
             Instance = this;
@@ -64,6 +66,26 @@ namespace Network
         private void NetworkManager_OnClientDisconnectCallback(ulong clientId)
         {
             OnFailedToJoinGame?.Invoke(this, EventArgs.Empty);
+        }
+        
+        
+        private void OnBulletHit(Vector3 position, Vector3 normal, int prefabIndex)
+        {
+            GameObject go = Instantiate(networkSpawnableList[prefabIndex].gameObject, position, Quaternion.LookRotation(normal));
+            NetworkObject vfxNetwork = go.GetComponent<NetworkObject>();
+            vfxNetwork.Spawn(true);
+            Invoke("DestroyNetworkObjectWithDelay", 0.5f);
+        }
+
+        private void DestroyNetworkObjectWithDelay(NetworkObject obj)
+        {
+            obj.Despawn();
+        }
+
+        [ServerRpc(RequireOwnership = false)]
+        public void SpawnBulletHitServerRpc(Vector3 position, Vector3 normal, int prefabIndex)
+        {
+            OnBulletHit(position, normal, prefabIndex);
         }
         
     }
