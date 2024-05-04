@@ -155,6 +155,7 @@ MonoBehaviour:
   normalCam: {fileID: 3134488775840411859}
   aimCam: {fileID: 4953378611141423119}
   audioListener: {fileID: 3203979106302933233}
+  playerUI: {fileID: 6434524918691131510}
 --- !u!1 &5953701158016941486
 GameObject:
   m_ObjectHideFlags: 0
@@ -593,15 +594,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8944336655422409503, guid: f6d148d888ffbf54b9afe9936dfaec1f, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.7
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8944336655422409503, guid: f6d148d888ffbf54b9afe9936dfaec1f, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.625
+      value: 1.375
       objectReference: {fileID: 0}
     - target: {fileID: 8944336655422409503, guid: f6d148d888ffbf54b9afe9936dfaec1f, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -4
+      value: -10
       objectReference: {fileID: 0}
     - target: {fileID: 8944336655422409503, guid: f6d148d888ffbf54b9afe9936dfaec1f, type: 3}
       propertyPath: m_LocalRotation.w
@@ -1036,6 +1037,7 @@ MonoBehaviour:
     m_Bits: 1
   debugTransform: {fileID: 7915398181148223018}
   playerRotationSmoothness: 20
+  bulletHitVFX: {fileID: 100006, guid: 94a130fb17f1cae4388a8fe1d8bd3055, type: 3}
 --- !u!114 &4484586221980464466
 MonoBehaviour:
   m_ObjectHideFlags: 0

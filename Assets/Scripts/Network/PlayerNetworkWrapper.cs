@@ -14,6 +14,7 @@ public class PlayerNetworkWrapper : NetworkBehaviour
     [SerializeField] private Camera mainCamera;
     [SerializeField] private CinemachineVirtualCamera normalCam, aimCam;
     [SerializeField] private AudioListener audioListener;
+    [SerializeField] private GameObject playerUI;
 
     private void Start()
     {
@@ -27,5 +28,6 @@ public class PlayerNetworkWrapper : NetworkBehaviour
         aimCam.enabled = true;
         mainCamera.enabled = true;
         audioListener.enabled = true;
+        playerUI.SetActive(true);
     }
 }
